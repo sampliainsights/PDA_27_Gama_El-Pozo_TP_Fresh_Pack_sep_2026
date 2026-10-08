@@ -115,7 +115,6 @@ section{margin-top:34px}
 .sec-head p{margin:4px 0 0;color:var(--ink-50);font-size:.9rem;max-width:70ch}
 .grid{display:grid;gap:16px}
 .g-2{grid-template-columns:1.15fr 1fr}
-.g-2b{grid-template-columns:minmax(220px,.42fr) 1.58fr}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px 22px 16px;min-width:0;display:flex;flex-direction:column}
 .card h3{margin:0;font-family:var(--font-head);font-size:1.08rem;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
 .card .desc{margin:3px 0 0;color:var(--ink-50);font-size:.84rem}
@@ -124,16 +123,17 @@ section{margin-top:34px}
 .chart-err{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ink-50);font-size:.86rem;border:1px dashed var(--line);border-radius:12px;padding:24px;min-height:160px}
 
 /* KPI */
-.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:20px}
-.kpi{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--rasp);border-radius:6px;padding:16px 16px 14px;min-width:0}
-.kpi-label{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.02em;font-size:.84rem;font-weight:600;color:var(--ink-70);margin:0;min-height:2.5em;line-height:1.25}
-.kpi-val{display:flex;align-items:baseline;gap:4px;margin:6px 0 10px}
-.kpi-val strong{font-family:var(--font-head);font-size:2.4rem;font-weight:700;letter-spacing:-.01em;line-height:1}
-.kpi-val span{color:var(--ink-50);font-weight:600}
-.dist{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--mist);gap:2px}
-.dist i{display:block;height:100%;transition:flex-grow 260ms var(--ease-out)}
-.kpi-foot{display:flex;justify-content:space-between;gap:6px;margin-top:9px;font-size:.76rem;color:var(--ink-50);flex-wrap:wrap}
-.delta{font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:20px}
+.kpi{background:var(--paper);border-radius:12px;padding:0;min-width:0;box-shadow:0 1px 2px rgba(17,17,17,.04),0 4px 16px rgba(17,17,17,.05)}
+.kpi-label{display:flex;align-items:center;gap:9px;margin:0;padding:14px 16px 12px;border-bottom:1px solid var(--line);font-size:.86rem;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi-label::before{content:'';flex:none;width:3px;height:15px;border-radius:2px;background:var(--rasp)}
+.kpi-val{display:flex;align-items:center;gap:6px;margin:0;padding:18px 16px 6px}
+.kpi-val strong{font-size:2.15rem;font-weight:400;letter-spacing:-.01em;line-height:1}
+.kpi-val span{color:var(--ink-50);font-weight:300;font-size:1rem;align-self:flex-end;margin-bottom:3px}
+.kpi-val svg{flex:none;margin-left:4px}
+.kpi-foot{margin:0;padding:0 16px 16px;font-size:.74rem;color:var(--ink-50)}
+.kpi-foot span{display:block}
+.delta{font-weight:500}
 .delta.up{color:var(--dusk)} .delta.down{color:var(--rasp)}
 
 /* Destacados */
@@ -174,14 +174,6 @@ section{margin-top:34px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
 
-/* Mini tarjeta de intención de compra */
-.stat{border-top:3px solid var(--rasp);justify-content:center;gap:4px}
-.stat-label{margin:0;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.02em;font-size:.95rem;font-weight:700;color:var(--ink-70)}
-.stat-val{font-family:var(--font-head);font-size:3.6rem;font-weight:800;line-height:1;color:var(--dusk);letter-spacing:-.01em}
-.stat-bar{display:flex;gap:2px;height:8px;border-radius:99px;overflow:hidden;background:var(--mist);margin-top:10px}
-.stat-bar i{display:block;height:100%;transition:flex-grow 260ms var(--ease-out)}
-.stat-bar i:first-child{background:var(--dusk)} .stat-bar i:last-child{background:var(--neutral)}
-.stat-foot{margin:6px 0 0;font-size:.82rem;color:var(--ink-50)}
 
 
 /* Matriz */
@@ -268,7 +260,7 @@ footer{margin-top:40px;color:var(--ink-50);font-size:.78rem;display:flex;justify
 @media (prefers-reduced-motion:no-preference){
   body.ready .kpi{animation:kpiIn 420ms var(--ease-out) both}
   body.ready .kpi:nth-child(2){animation-delay:40ms} body.ready .kpi:nth-child(3){animation-delay:80ms}
-  body.ready .kpi:nth-child(4){animation-delay:120ms} body.ready .kpi:nth-child(5){animation-delay:160ms}
+  body.ready .kpi:nth-child(4){animation-delay:120ms} body.ready .kpi:nth-child(5){animation-delay:160ms} body.ready .kpi:nth-child(6){animation-delay:200ms}
   @keyframes kpiIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 }
 @media (prefers-reduced-motion:reduce){
@@ -280,7 +272,7 @@ body.pdf-mode *{animation:none !important;transition:none !important}
 /* ---------- Responsive ---------- */
 @media (max-width:1240px){
   .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .g-2,.g-2b{grid-template-columns:1fr}
+  .g-2{grid-template-columns:1fr}
 }
 @media (max-width:960px){
   .topbar{display:flex}
@@ -295,8 +287,7 @@ body.pdf-mode *{animation:none !important;transition:none !important}
 }
 @media (max-width:640px){
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .kpis .kpi:last-child{grid-column:1/-1}
-  .kpi-val strong{font-size:1.9rem}
+  .kpi-val strong{font-size:1.85rem}
   .card{padding:16px 16px 14px;border-radius:6px}
   .db-row,.db-axis{grid-template-columns:86px 1fr 44px;gap:8px}
   .db-name{font-size:.8rem}
@@ -445,19 +436,11 @@ body.pdf-mode *{animation:none !important;transition:none !important}
         <p>Respuestas a «¿Comprarías este producto?» cruzadas con el sentimiento de su explicación.</p>
       </div>
     </div>
-    <div class="grid g-2b" data-pdf-block>
-      <article class="card stat">
-        <p class="stat-label">Comprarían el producto</p>
-        <strong class="stat-val" id="buyPct">–</strong>
-        <div class="stat-bar" aria-hidden="true"><i id="buyBarSi"></i><i id="buyBarNo"></i></div>
-        <p class="stat-foot" id="buyNo"></p>
-      </article>
-      <article class="card">
+    <article class="card" data-pdf-block>
         <div class="card-head"><div><h3>Sentimiento según intención de compra</h3><p class="desc">Porcentaje de cada fila; el total es el peso de cada grupo.</p></div></div>
         <div style="overflow-x:auto"><table class="matrix" id="matrix"></table></div>
         <p class="matrix-note" id="matrixNote"></p>
-      </article>
-    </div>
+    </article>
   </section>
 
   <section id="sentimiento">
@@ -593,7 +576,6 @@ const CONFIG = {
 };
 
 const C = { ink:'#111111', ink70:'#494949', ink50:'#636363', line:'#E0E0E0', dusk:'#1E5AA8', dusk300:'#7EA3D6', blush:'#FBD3DC', melon:'#F2557A', rasp:'#EC1743', brick:'#B30F31', neutral:'#BDBDBD', grey:'#8A8A8A' };
-const LIKERT_COLORS = [C.brick, C.melon, C.neutral, C.dusk300, C.dusk];
 const SENT = ['Positiva', 'Neutra', 'Negativa'];
 const SENT_COLORS = { Positiva: C.dusk, Neutra: C.neutral, Negativa: C.rasp };
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -759,21 +741,28 @@ function renderKPIs() {
   const sel = rowsSel(), all = rowsAll();
   const S = CONFIG.attrs.map(a => ({ a, s: stats(sel, a.k), t: stats(all, a.k) }));
   $('#kpis').innerHTML = S.map(({ a, s, t }) => {
-    const tot = s.dist.reduce((x, y) => x + y, 0) || 1;
-    let delta = '';
+    // Con el filtro de compra activo: flecha de tendencia y diferencia frente al total
+    let trend = '', foot = `${pct(s.top2, s.n)} puntúa 4 o 5`;
     if (state.f.compra !== 'all' && s.mean != null && t.mean != null) {
-      const d = s.mean - t.mean;
-      delta = `<span class="delta ${d >= 0 ? 'up' : 'down'}">${d >= 0 ? '+' : '−'}${fmt(Math.abs(d))} frente al total</span>`;
+      const d = s.mean - t.mean, up = d >= 0;
+      trend = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${up ? C.dusk : C.rasp}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${up ? '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>' : '<path d="M3 7l6 6 4-4 8 8"/><path d="M15 17h6v-6"/>'}</svg>`;
+      foot = `<span class="delta ${up ? 'up' : 'down'}">${up ? '+' : '−'}${fmt(Math.abs(d))} frente al total</span><span>${foot}</span>`;
     }
     return `<article class="kpi">
-      <p class="kpi-label">${a.label}</p>
-      <div class="kpi-val"><strong>${fmt(s.mean)}</strong><span>/ 5</span></div>
-      <div class="dist" role="img" aria-label="Distribución: ${s.dist.map((c, i) => `${i + 1}: ${pct(c, s.n)}`).join(', ')}">
-        ${s.dist.map((c, i) => `<i style="flex-grow:${c / tot};background:${LIKERT_COLORS[i]}"></i>`).join('')}
-      </div>
-      <div class="kpi-foot"><span>${pct(s.top2, s.n)} puntúa 4 o 5</span>${delta}</div>
+      <p class="kpi-label" title="${a.label}">${a.short}</p>
+      <div class="kpi-val"><strong>${fmt(s.mean)}</strong><span>/ 5</span>${trend}</div>
+      <p class="kpi-foot">${foot}</p>
     </article>`;
-  }).join('');
+  }).join('') + buyKPI();
+}
+function buyKPI() {
+  const sel = rowsSel();
+  const si = sel.filter(r => r.compra === 'Sí').length, no = sel.filter(r => r.compra === 'No').length, n = si + no;
+  return `<article class="kpi">
+      <p class="kpi-label" title="Comprarían el producto">Comprarían</p>
+      <div class="kpi-val"><strong>${pct(si, n)}</strong></div>
+      <p class="kpi-foot">${pct(no, n)} no lo compraría</p>
+    </article>`;
 }
 
 /* ---------- Radar ---------- */
@@ -858,14 +847,6 @@ function renderDumbbell() {
 }
 
 /* ---------- Intención de compra ---------- */
-function renderBuy() {
-  const sel = rowsSel();
-  const si = sel.filter(r => r.compra === 'Sí').length, no = sel.filter(r => r.compra === 'No').length, n = si + no;
-  $('#buyPct').textContent = pct(si, n);
-  $('#buyBarSi').style.flexGrow = n ? si / n : 0;
-  $('#buyBarNo').style.flexGrow = n ? no / n : 0;
-  $('#buyNo').textContent = `${pct(no, n)} no lo compraría`;
-}
 
 function renderMatrix() {
   const all = rowsAll().filter(r => r.compra && r.sent);
@@ -1080,7 +1061,7 @@ function renderQuestions() {
 function renderAll() {
   renderHero(); renderActiveFilter(); renderKPIs(); renderInsights();
   renderRadar(); renderDumbbell();
-  renderBuy(); renderMatrix(); renderTheme(); renderVerbatims();
+  renderMatrix(); renderTheme(); renderVerbatims();
 }
 
 /* ================= Controles ================= */
